@@ -1,0 +1,10 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Baklava\\": "src/"
+        }
+    },
+    "require": {
+        "monolog/monolog": "~1.13"
+    }
+}
