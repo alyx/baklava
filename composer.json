@@ -1,10 +1,17 @@
 {
-    "autoload": {
-        "psr-4": {
-            "Baklava\\": "src/"
-        }
-    },
-    "require": {
-        "monolog/monolog": "~1.13"
+  "name": "alyx/baklava",
+  "authors": [
+    {
+      "name": "Alyx Wolcott"
     }
+  ],
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Baklava\\": "src/"
+    }
+  },
+  "require": {
+    "monolog/monolog": "~1.13"
+  }
 }
