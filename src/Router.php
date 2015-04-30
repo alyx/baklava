@@ -52,6 +52,6 @@ class Router
         }
         $target = array_shift(array_values($found));
 
-        return $target->function->invokeArgs($args);
+        return $target->run($args);
     }
 }
