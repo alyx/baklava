@@ -16,6 +16,10 @@ class Router
 
     public function addRoute($method, $name, $handler)
     {
+        if (strpos($name, '/') == 0)
+        {
+            $name = substr($name, 1);
+        }
         $route = new Route($name, $handler);
 
         $this->routeList->add(strtolower($method . $name), $route);
@@ -30,13 +34,18 @@ class Router
 
     public function dispatch($method, $url)
     {
-        if (strpos($url, '/') == 0) {
-            $args = explode("/", substr($url, 1));
-        } else {
-            $args = explode("/", $url);
+        $split = parse_url($url);
+        if (isset($split["path"]) && $split["path"] != "/")
+        {
+            $args = explode("/", substr($split["path"], 1));
+            $route = array_shift($args);
+        }
+        else
+        {
+            $args = [];
+            $route = "/";
         }
 
-        $route = array_shift($args);
         $found = $this->search($method, $route);
         if ($found == false) {
             return false;
